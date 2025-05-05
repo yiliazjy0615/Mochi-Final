@@ -1,0 +1,1767 @@
+[gd_scene load_steps=72 format=3 uid="uid://bla2e4py1rmag"]
+
+[ext_resource type="Script" uid="uid://xjxb8oaoy5k4" path="res://Scene/Level_2/level_2.gd" id="1_5oh13"]
+[ext_resource type="Texture2D" uid="uid://bbplht6ffv2nb" path="res://Scene/Level_2/Image/果冻之路.png" id="1_bd5a2"]
+[ext_resource type="PackedScene" uid="uid://diuuqxqpir2wn" path="res://Scene/Player/Player.tscn" id="2_22c32"]
+[ext_resource type="Texture2D" uid="uid://b5merr7xvdld5" path="res://Scene/Level_2/Image/果冻之路2.png" id="2_vjrnv"]
+[ext_resource type="Texture2D" uid="uid://eimc3un661j4" path="res://Scene/Level_2/Image/果冻猫.png" id="3_dj334"]
+[ext_resource type="Script" uid="uid://c6b2amgcbkyjj" path="res://Scene/Level_2/falling_object.gd" id="4_ixqxf"]
+[ext_resource type="AudioStream" uid="uid://chyjcractep3i" path="res://Scene/Level_2/Image/猫叫.mp3" id="4_j8t7s"]
+[ext_resource type="Script" uid="uid://b60p2m3lma0ts" path="res://Scene/Level_2/flower.gd" id="5_wsrbg"]
+[ext_resource type="Texture2D" uid="uid://dilm8f5s3qao2" path="res://Assest/dialog box small.png" id="5_xjke4"]
+[ext_resource type="Texture2D" uid="uid://busetynoglbvm" path="res://Scene/Level_1/Image/光芒.png" id="6_dxnxq"]
+[ext_resource type="Texture2D" uid="uid://bioyqhf8mac45" path="res://icon.svg" id="7_cdnem"]
+[ext_resource type="Shader" uid="uid://dpyq1sdd5dfr3" path="res://Scene/Level_2/water.gdshader" id="7_qyfnl"]
+[ext_resource type="AudioStream" uid="uid://ck3ag3ub112hm" path="res://Scene/Level_1/Image/奖励.mp3" id="9_8vpxq"]
+[ext_resource type="Shader" uid="uid://dffj10q4ljekj" path="res://Scene/Level_2/level_2.gdshader" id="10_dxnxq"]
+[ext_resource type="Texture2D" uid="uid://c8p2clf7elkvx" path="res://Scene/Level_2/Image/果冻晶块.png" id="11_0uhst"]
+[ext_resource type="Texture2D" uid="uid://ydhfjuhkdsi3" path="res://Scene/Level_1/Image/光束.png" id="12_1s2jk"]
+[ext_resource type="Texture2D" uid="uid://bmo2j0ces75r1" path="res://Scene/Level_2/Image/果冻草.png" id="14_ixqxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22c32"]
+size = Vector2(121, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdnem"]
+size = Vector2(226, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lte4"]
+size = Vector2(237.5, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjke4"]
+size = Vector2(712.5, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjrnv"]
+size = Vector2(1838, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyfnl"]
+size = Vector2(731, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dj334"]
+size = Vector2(2776.5, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8t7s"]
+size = Vector2(66.25, 1137.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8vpxq"]
+shader = ExtResource("10_dxnxq")
+shader_parameter/Strength = 10.0
+shader_parameter/Speed = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cknua"]
+radius = 30.0
+
+[sub_resource type="Animation" id="Animation_p25a7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_l5s68"]
+resource_name = "flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cntce"]
+_data = {
+&"RESET": SubResource("Animation_p25a7"),
+&"flash": SubResource("Animation_l5s68")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p25a7"]
+bg_color = Color(1, 1, 1, 0.588235)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_18bpy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cntce"]
+resource_name = "缩放"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6kv8d"]
+_data = {
+&"RESET": SubResource("Animation_18bpy"),
+&"缩放": SubResource("Animation_cntce")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dxnxq"]
+radius = 45.64
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8vpxq"]
+texture = ExtResource("5_xjke4")
+texture_margin_left = 25.0
+texture_margin_top = 20.0
+texture_margin_right = 9.53549
+texture_margin_bottom = 25.0167
+
+[sub_resource type="Animation" id="Animation_obayv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MsgLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3eda0"]
+resource_name = "show"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MsgLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.607843)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oblws"]
+_data = {
+&"RESET": SubResource("Animation_obayv"),
+&"show": SubResource("Animation_3eda0")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cdnem"]
+texture = ExtResource("5_xjke4")
+texture_margin_left = 25.0
+texture_margin_top = 20.0
+texture_margin_right = 9.53549
+texture_margin_bottom = 25.0167
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8t7s"]
+atlas = ExtResource("3_dj334")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjrnv"]
+atlas = ExtResource("3_dj334")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjke4"]
+atlas = ExtResource("3_dj334")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdnem"]
+atlas = ExtResource("3_dj334")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyfnl"]
+atlas = ExtResource("3_dj334")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lte4"]
+atlas = ExtResource("3_dj334")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fjti"]
+atlas = ExtResource("3_dj334")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oh13"]
+atlas = ExtResource("3_dj334")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nbb2"]
+atlas = ExtResource("3_dj334")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uhst"]
+atlas = ExtResource("3_dj334")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixqxf"]
+atlas = ExtResource("3_dj334")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s2jk"]
+atlas = ExtResource("3_dj334")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wsrbg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8t7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjrnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjke4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdnem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyfnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lte4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fjti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oh13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nbb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uhst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixqxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s2jk")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 10.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lte4"]
+shader = ExtResource("7_qyfnl")
+shader_parameter/wave_color = Color(0.855696, 0.412475, 0.577506, 1)
+shader_parameter/edge_color = Color(1, 0.756863, 1, 1)
+shader_parameter/bubble_color = Color(1, 0.811765, 1, 1)
+shader_parameter/wave_opacity = 1.0
+shader_parameter/edge_width = 0.075
+shader_parameter/texture_blend = 0.345
+shader_parameter/bubble_opacity = 0.5
+shader_parameter/bubble_speed = 0.0
+shader_parameter/bubble_count = 1
+shader_parameter/speed = 10.0
+
+[sub_resource type="Animation" id="Animation_dxnxq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wsrbg"]
+resource_name = "旋转"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vpxq"]
+_data = {
+&"RESET": SubResource("Animation_dxnxq"),
+&"旋转": SubResource("Animation_wsrbg")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlmih"]
+bg_color = Color(0.556863, 0.282353, 0.117647, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.470588, 0.207843, 0.0862745, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crufb"]
+bg_color = Color(0.77485, 0.414291, 0.203195, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.470588, 0.207843, 0.0862745, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Animation" id="Animation_0uhst"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-275, -150)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MsgLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ixqxf"]
+resource_name = "bee"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(105, 90), Vector2(105, -240)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1s2jk"]
+resource_name = "talk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MsgLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0uhst"]
+_data = {
+&"RESET": SubResource("Animation_0uhst"),
+&"show": SubResource("Animation_ixqxf"),
+&"talk": SubResource("Animation_1s2jk")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsrbg"]
+atlas = ExtResource("14_ixqxf")
+region = Rect2(48, 11, 128, 226)
+
+[sub_resource type="Animation" id="Animation_l6tno"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_oblws"]
+resource_name = "story"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.46667, 2.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6tno"]
+_data = {
+&"RESET": SubResource("Animation_l6tno"),
+&"story": SubResource("Animation_oblws")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxnxq"]
+bg_color = Color(0.18359, 0.18359, 0.18359, 1)
+
+[sub_resource type="Animation" id="Animation_6ug2b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rr16x"]
+resource_name = "change"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ug2b"]
+_data = {
+&"RESET": SubResource("Animation_6ug2b"),
+&"change": SubResource("Animation_rr16x")
+}
+
+[node name="Level_2" type="Node2D"]
+script = ExtResource("1_5oh13")
+
+[node name="Bg" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="果冻之路" type="Sprite2D" parent="Bg"]
+texture = ExtResource("2_vjrnv")
+centered = false
+
+[node name="果冻之路2" type="Sprite2D" parent="Bg"]
+position = Vector2(1319, 0)
+texture = ExtResource("1_bd5a2")
+centered = false
+flip_h = true
+
+[node name="Wall" type="StaticBody2D" parent="."]
+visible = false
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Wall"]
+position = Vector2(109.5, 347.5)
+shape = SubResource("RectangleShape2D_22c32")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Wall"]
+position = Vector2(2668, 200)
+shape = SubResource("RectangleShape2D_22c32")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Wall"]
+position = Vector2(255, 224)
+shape = SubResource("RectangleShape2D_22c32")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Wall"]
+position = Vector2(431, 293)
+shape = SubResource("RectangleShape2D_22c32")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Wall"]
+position = Vector2(804, 293)
+shape = SubResource("RectangleShape2D_22c32")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1835, 293)
+shape = SubResource("RectangleShape2D_22c32")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Wall"]
+position = Vector2(2208, 293)
+shape = SubResource("RectangleShape2D_22c32")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="Wall"]
+position = Vector2(2531, 347)
+shape = SubResource("RectangleShape2D_22c32")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="Wall"]
+position = Vector2(2384, 225)
+shape = SubResource("RectangleShape2D_22c32")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1989, 421)
+shape = SubResource("RectangleShape2D_22c32")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Wall"]
+position = Vector2(649, 422)
+shape = SubResource("RectangleShape2D_22c32")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1850, 627)
+shape = SubResource("RectangleShape2D_cdnem")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1317.25, 370)
+shape = SubResource("RectangleShape2D_3lte4")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1318.75, 200)
+shape = SubResource("RectangleShape2D_xjke4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(860, 569)
+shape = SubResource("RectangleShape2D_vjrnv")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Wall"]
+position = Vector2(2275.5, 569)
+shape = SubResource("RectangleShape2D_qyfnl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1321.75, -34)
+shape = SubResource("RectangleShape2D_dj334")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-31.875, 223.75)
+shape = SubResource("RectangleShape2D_j8t7s")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall"]
+position = Vector2(2674, 223.75)
+shape = SubResource("RectangleShape2D_j8t7s")
+
+[node name="FallingObject" type="Node2D" parent="."]
+script = ExtResource("4_ixqxf")
+
+[node name="Timer" type="Timer" parent="FallingObject"]
+wait_time = 2.0
+autostart = true
+
+[node name="Flowers" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_8vpxq")
+
+[node name="Flower1" type="Area2D" parent="Flowers"]
+position = Vector2(986, 145)
+script = ExtResource("5_wsrbg")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flowers/Flower1"]
+visible = false
+shape = SubResource("CircleShape2D_cknua")
+
+[node name="Light" type="Sprite2D" parent="Flowers/Flower1"]
+visible = false
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_dxnxq")
+
+[node name="Prog" type="TextureProgressBar" parent="Flowers/Flower1"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = ExtResource("12_1s2jk")
+texture_progress = ExtResource("12_1s2jk")
+tint_under = Color(1, 1, 1, 0.588235)
+
+[node name="Sprite2D" type="Sprite2D" parent="Flowers/Flower1"]
+material = SubResource("ShaderMaterial_8vpxq")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_ixqxf")
+hframes = 5
+vframes = 2
+frame = 1
+region_rect = Rect2(127.639, 32.4719, 16.3609, 30.6659)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flowers/Flower1"]
+root_node = NodePath("../Light")
+libraries = {
+&"": SubResource("AnimationLibrary_cntce")
+}
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Flowers/Flower1"]
+stream = ExtResource("9_8vpxq")
+
+[node name="Msg" type="Label" parent="Flowers/Flower1"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -140.0
+offset_right = 30.0
+offset_bottom = -80.0
+grow_horizontal = 2
+pivot_offset = Vector2(30, 30)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_p25a7")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MsgAni" type="AnimationPlayer" parent="Flowers/Flower1/Msg"]
+libraries = {
+&"": SubResource("AnimationLibrary_6kv8d")
+}
+autoplay = "缩放"
+speed_scale = 0.0
+
+[node name="Flower2" type="Area2D" parent="Flowers"]
+position = Vector2(1130, 145)
+script = ExtResource("5_wsrbg")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flowers/Flower2"]
+visible = false
+shape = SubResource("CircleShape2D_cknua")
+
+[node name="Light" type="Sprite2D" parent="Flowers/Flower2"]
+visible = false
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_dxnxq")
+
+[node name="Prog" type="TextureProgressBar" parent="Flowers/Flower2"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = ExtResource("12_1s2jk")
+texture_progress = ExtResource("12_1s2jk")
+tint_under = Color(1, 1, 1, 0.588235)
+
+[node name="Sprite2D" type="Sprite2D" parent="Flowers/Flower2"]
+material = SubResource("ShaderMaterial_8vpxq")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_ixqxf")
+hframes = 5
+vframes = 2
+region_rect = Rect2(127.639, 32.4719, 16.3609, 30.6659)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flowers/Flower2"]
+root_node = NodePath("../Light")
+libraries = {
+&"": SubResource("AnimationLibrary_cntce")
+}
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Flowers/Flower2"]
+stream = ExtResource("9_8vpxq")
+
+[node name="Msg" type="Label" parent="Flowers/Flower2"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -140.0
+offset_right = 30.0
+offset_bottom = -80.0
+grow_horizontal = 2
+pivot_offset = Vector2(30, 30)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_p25a7")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MsgAni" type="AnimationPlayer" parent="Flowers/Flower2/Msg"]
+libraries = {
+&"": SubResource("AnimationLibrary_6kv8d")
+}
+autoplay = "缩放"
+speed_scale = 0.0
+
+[node name="Flower3" type="Area2D" parent="Flowers"]
+position = Vector2(1283, 145)
+script = ExtResource("5_wsrbg")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flowers/Flower3"]
+visible = false
+shape = SubResource("CircleShape2D_cknua")
+
+[node name="Light" type="Sprite2D" parent="Flowers/Flower3"]
+visible = false
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_dxnxq")
+
+[node name="Prog" type="TextureProgressBar" parent="Flowers/Flower3"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = ExtResource("12_1s2jk")
+texture_progress = ExtResource("12_1s2jk")
+tint_under = Color(1, 1, 1, 0.588235)
+
+[node name="Sprite2D" type="Sprite2D" parent="Flowers/Flower3"]
+material = SubResource("ShaderMaterial_8vpxq")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_ixqxf")
+hframes = 5
+vframes = 2
+frame = 3
+region_rect = Rect2(127.639, 32.4719, 16.3609, 30.6659)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flowers/Flower3"]
+root_node = NodePath("../Light")
+libraries = {
+&"": SubResource("AnimationLibrary_cntce")
+}
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Flowers/Flower3"]
+stream = ExtResource("9_8vpxq")
+
+[node name="Msg" type="Label" parent="Flowers/Flower3"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -140.0
+offset_right = 30.0
+offset_bottom = -80.0
+grow_horizontal = 2
+pivot_offset = Vector2(30, 30)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_p25a7")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MsgAni" type="AnimationPlayer" parent="Flowers/Flower3/Msg"]
+libraries = {
+&"": SubResource("AnimationLibrary_6kv8d")
+}
+autoplay = "缩放"
+speed_scale = 0.0
+
+[node name="Flower4" type="Area2D" parent="Flowers"]
+position = Vector2(1825, 237)
+script = ExtResource("5_wsrbg")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flowers/Flower4"]
+visible = false
+shape = SubResource("CircleShape2D_cknua")
+
+[node name="Light" type="Sprite2D" parent="Flowers/Flower4"]
+visible = false
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_dxnxq")
+
+[node name="Prog" type="TextureProgressBar" parent="Flowers/Flower4"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = ExtResource("12_1s2jk")
+texture_progress = ExtResource("12_1s2jk")
+tint_under = Color(1, 1, 1, 0.588235)
+
+[node name="Sprite2D" type="Sprite2D" parent="Flowers/Flower4"]
+material = SubResource("ShaderMaterial_8vpxq")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_ixqxf")
+hframes = 5
+vframes = 2
+frame = 3
+region_rect = Rect2(127.639, 32.4719, 16.3609, 30.6659)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flowers/Flower4"]
+root_node = NodePath("../Light")
+libraries = {
+&"": SubResource("AnimationLibrary_cntce")
+}
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Flowers/Flower4"]
+stream = ExtResource("9_8vpxq")
+
+[node name="Msg" type="Label" parent="Flowers/Flower4"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -140.0
+offset_right = 30.0
+offset_bottom = -80.0
+grow_horizontal = 2
+pivot_offset = Vector2(30, 30)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_p25a7")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MsgAni" type="AnimationPlayer" parent="Flowers/Flower4/Msg"]
+libraries = {
+&"": SubResource("AnimationLibrary_6kv8d")
+}
+autoplay = "缩放"
+speed_scale = 0.0
+
+[node name="Flower5" type="Area2D" parent="Flowers"]
+position = Vector2(1342, 314)
+script = ExtResource("5_wsrbg")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flowers/Flower5"]
+visible = false
+shape = SubResource("CircleShape2D_cknua")
+
+[node name="Light" type="Sprite2D" parent="Flowers/Flower5"]
+visible = false
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_dxnxq")
+
+[node name="Prog" type="TextureProgressBar" parent="Flowers/Flower5"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = ExtResource("12_1s2jk")
+texture_progress = ExtResource("12_1s2jk")
+tint_under = Color(1, 1, 1, 0.588235)
+
+[node name="Sprite2D" type="Sprite2D" parent="Flowers/Flower5"]
+material = SubResource("ShaderMaterial_8vpxq")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_ixqxf")
+hframes = 5
+vframes = 2
+region_rect = Rect2(127.639, 32.4719, 16.3609, 30.6659)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flowers/Flower5"]
+root_node = NodePath("../Light")
+libraries = {
+&"": SubResource("AnimationLibrary_cntce")
+}
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Flowers/Flower5"]
+stream = ExtResource("9_8vpxq")
+
+[node name="Msg" type="Label" parent="Flowers/Flower5"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -140.0
+offset_right = 30.0
+offset_bottom = -80.0
+grow_horizontal = 2
+pivot_offset = Vector2(30, 30)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_p25a7")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MsgAni" type="AnimationPlayer" parent="Flowers/Flower5/Msg"]
+libraries = {
+&"": SubResource("AnimationLibrary_6kv8d")
+}
+autoplay = "缩放"
+speed_scale = 0.0
+
+[node name="Flower6" type="Area2D" parent="Flowers"]
+position = Vector2(2197, 236)
+script = ExtResource("5_wsrbg")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flowers/Flower6"]
+visible = false
+shape = SubResource("CircleShape2D_cknua")
+
+[node name="Light" type="Sprite2D" parent="Flowers/Flower6"]
+visible = false
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_dxnxq")
+
+[node name="Prog" type="TextureProgressBar" parent="Flowers/Flower6"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = ExtResource("12_1s2jk")
+texture_progress = ExtResource("12_1s2jk")
+tint_under = Color(1, 1, 1, 0.588235)
+
+[node name="Sprite2D" type="Sprite2D" parent="Flowers/Flower6"]
+material = SubResource("ShaderMaterial_8vpxq")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_ixqxf")
+hframes = 5
+vframes = 2
+region_rect = Rect2(127.639, 32.4719, 16.3609, 30.6659)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flowers/Flower6"]
+root_node = NodePath("../Light")
+libraries = {
+&"": SubResource("AnimationLibrary_cntce")
+}
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Flowers/Flower6"]
+stream = ExtResource("9_8vpxq")
+
+[node name="Msg" type="Label" parent="Flowers/Flower6"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -140.0
+offset_right = 30.0
+offset_bottom = -80.0
+grow_horizontal = 2
+pivot_offset = Vector2(30, 30)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_p25a7")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MsgAni" type="AnimationPlayer" parent="Flowers/Flower6/Msg"]
+libraries = {
+&"": SubResource("AnimationLibrary_6kv8d")
+}
+autoplay = "缩放"
+speed_scale = 0.0
+
+[node name="Flower7" type="Area2D" parent="Flowers"]
+position = Vector2(2392, 168)
+script = ExtResource("5_wsrbg")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flowers/Flower7"]
+visible = false
+shape = SubResource("CircleShape2D_cknua")
+
+[node name="Light" type="Sprite2D" parent="Flowers/Flower7"]
+visible = false
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_dxnxq")
+
+[node name="Prog" type="TextureProgressBar" parent="Flowers/Flower7"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = ExtResource("12_1s2jk")
+texture_progress = ExtResource("12_1s2jk")
+tint_under = Color(1, 1, 1, 0.588235)
+
+[node name="Sprite2D" type="Sprite2D" parent="Flowers/Flower7"]
+material = SubResource("ShaderMaterial_8vpxq")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_ixqxf")
+hframes = 5
+vframes = 2
+region_rect = Rect2(127.639, 32.4719, 16.3609, 30.6659)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flowers/Flower7"]
+root_node = NodePath("../Light")
+libraries = {
+&"": SubResource("AnimationLibrary_cntce")
+}
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Flowers/Flower7"]
+stream = ExtResource("9_8vpxq")
+
+[node name="Msg" type="Label" parent="Flowers/Flower7"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -140.0
+offset_right = 30.0
+offset_bottom = -80.0
+grow_horizontal = 2
+pivot_offset = Vector2(30, 30)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_p25a7")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MsgAni" type="AnimationPlayer" parent="Flowers/Flower7/Msg"]
+libraries = {
+&"": SubResource("AnimationLibrary_6kv8d")
+}
+autoplay = "缩放"
+speed_scale = 0.0
+
+[node name="Flower8" type="Area2D" parent="Flowers"]
+position = Vector2(2457, 496)
+script = ExtResource("5_wsrbg")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flowers/Flower8"]
+visible = false
+shape = SubResource("CircleShape2D_cknua")
+
+[node name="Light" type="Sprite2D" parent="Flowers/Flower8"]
+visible = false
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_dxnxq")
+
+[node name="Prog" type="TextureProgressBar" parent="Flowers/Flower8"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = ExtResource("12_1s2jk")
+texture_progress = ExtResource("12_1s2jk")
+tint_under = Color(1, 1, 1, 0.588235)
+
+[node name="Sprite2D" type="Sprite2D" parent="Flowers/Flower8"]
+material = SubResource("ShaderMaterial_8vpxq")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_ixqxf")
+hframes = 5
+vframes = 2
+region_rect = Rect2(127.639, 32.4719, 16.3609, 30.6659)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flowers/Flower8"]
+root_node = NodePath("../Light")
+libraries = {
+&"": SubResource("AnimationLibrary_cntce")
+}
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Flowers/Flower8"]
+stream = ExtResource("9_8vpxq")
+
+[node name="Msg" type="Label" parent="Flowers/Flower8"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -140.0
+offset_right = 30.0
+offset_bottom = -80.0
+grow_horizontal = 2
+pivot_offset = Vector2(30, 30)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_p25a7")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MsgAni" type="AnimationPlayer" parent="Flowers/Flower8/Msg"]
+libraries = {
+&"": SubResource("AnimationLibrary_6kv8d")
+}
+autoplay = "缩放"
+speed_scale = 0.0
+
+[node name="Flower9" type="Area2D" parent="Flowers"]
+position = Vector2(783, 237)
+script = ExtResource("5_wsrbg")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flowers/Flower9"]
+visible = false
+shape = SubResource("CircleShape2D_cknua")
+
+[node name="Light" type="Sprite2D" parent="Flowers/Flower9"]
+visible = false
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_dxnxq")
+
+[node name="Prog" type="TextureProgressBar" parent="Flowers/Flower9"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = ExtResource("12_1s2jk")
+texture_progress = ExtResource("12_1s2jk")
+tint_under = Color(1, 1, 1, 0.588235)
+
+[node name="Sprite2D" type="Sprite2D" parent="Flowers/Flower9"]
+material = SubResource("ShaderMaterial_8vpxq")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_ixqxf")
+hframes = 5
+vframes = 2
+frame = 2
+region_rect = Rect2(127.639, 32.4719, 16.3609, 30.6659)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flowers/Flower9"]
+root_node = NodePath("../Light")
+libraries = {
+&"": SubResource("AnimationLibrary_cntce")
+}
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Flowers/Flower9"]
+stream = ExtResource("9_8vpxq")
+
+[node name="Msg" type="Label" parent="Flowers/Flower9"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -140.0
+offset_right = 30.0
+offset_bottom = -80.0
+grow_horizontal = 2
+pivot_offset = Vector2(30, 30)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_p25a7")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MsgAni" type="AnimationPlayer" parent="Flowers/Flower9/Msg"]
+libraries = {
+&"": SubResource("AnimationLibrary_6kv8d")
+}
+autoplay = "缩放"
+speed_scale = 0.0
+
+[node name="Flower10" type="Area2D" parent="Flowers"]
+position = Vector2(938, 495)
+script = ExtResource("5_wsrbg")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flowers/Flower10"]
+visible = false
+shape = SubResource("CircleShape2D_cknua")
+
+[node name="Light" type="Sprite2D" parent="Flowers/Flower10"]
+visible = false
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_dxnxq")
+
+[node name="Prog" type="TextureProgressBar" parent="Flowers/Flower10"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = ExtResource("12_1s2jk")
+texture_progress = ExtResource("12_1s2jk")
+tint_under = Color(1, 1, 1, 0.588235)
+
+[node name="Sprite2D" type="Sprite2D" parent="Flowers/Flower10"]
+material = SubResource("ShaderMaterial_8vpxq")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_ixqxf")
+hframes = 5
+vframes = 2
+frame = 4
+region_rect = Rect2(127.639, 32.4719, 16.3609, 30.6659)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flowers/Flower10"]
+root_node = NodePath("../Light")
+libraries = {
+&"": SubResource("AnimationLibrary_cntce")
+}
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Flowers/Flower10"]
+stream = ExtResource("9_8vpxq")
+
+[node name="Msg" type="Label" parent="Flowers/Flower10"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -140.0
+offset_right = 30.0
+offset_bottom = -80.0
+grow_horizontal = 2
+pivot_offset = Vector2(30, 30)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_p25a7")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MsgAni" type="AnimationPlayer" parent="Flowers/Flower10/Msg"]
+libraries = {
+&"": SubResource("AnimationLibrary_6kv8d")
+}
+autoplay = "缩放"
+speed_scale = 0.0
+
+[node name="NPCArea" type="Area2D" parent="."]
+position = Vector2(1740, 479)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCArea"]
+shape = SubResource("CircleShape2D_dxnxq")
+
+[node name="MsgLabel" type="Label" parent="NPCArea"]
+visible = false
+offset_left = -6.0
+offset_top = -161.0
+offset_right = 185.535
+offset_bottom = -69.0
+theme_override_colors/font_color = Color(0.517647, 0.247059, 0.109804, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_8vpxq")
+text = "Press ​E to give flowers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NPCArea"]
+libraries = {
+&"": SubResource("AnimationLibrary_oblws")
+}
+autoplay = "show"
+
+[node name="Help" type="Label" parent="NPCArea"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 52.0
+offset_top = -92.0
+offset_right = 160.0
+offset_bottom = -18.9833
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.517647, 0.247059, 0.109804, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_cdnem")
+text = "Help!"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NPC1" type="AnimatedSprite2D" parent="NPCArea"]
+position = Vector2(100, 95)
+sprite_frames = SubResource("SpriteFrames_wsrbg")
+animation = &"talk"
+autoplay = "talk"
+
+[node name="Water" type="Sprite2D" parent="NPCArea"]
+material = SubResource("ShaderMaterial_3lte4")
+position = Vector2(104, 104)
+scale = Vector2(1, 0.390625)
+texture = ExtResource("7_cdnem")
+
+[node name="NPC" type="Node2D" parent="NPCArea"]
+unique_name_in_owner = true
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-275, -150)
+scale = Vector2(1e-05, 1e-05)
+metadata/_edit_group_ = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="NPCArea/NPC"]
+scale = Vector2(100000, 100000)
+stream = ExtResource("4_j8t7s")
+
+[node name="NPC" type="AnimatedSprite2D" parent="NPCArea/NPC"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_wsrbg")
+animation = &"talk"
+autoplay = "talk"
+
+[node name="Light" type="Sprite2D" parent="NPCArea/NPC"]
+show_behind_parent = true
+scale = Vector2(3.3, 3.3)
+texture = ExtResource("12_1s2jk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NPCArea/NPC/Light"]
+libraries = {
+&"": SubResource("AnimationLibrary_8vpxq")
+}
+autoplay = "旋转"
+speed_scale = 0.3
+
+[node name="MsgLabel" type="Label" parent="NPCArea/NPC"]
+visible = false
+offset_left = 160.0
+offset_top = -48.0
+offset_right = 466.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(0.517647, 0.247059, 0.109804, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_8vpxq")
+text = "Thank you for helping me! Here’s a piece of my treasured [Jelly Crystal] —it’s yours now!"
+vertical_alignment = 1
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Thanks" type="Button" parent="NPCArea/NPC/MsgLabel"]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = 8.0
+offset_right = 80.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_mlmih")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_crufb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mlmih")
+text = "谢谢"
+
+[node name="TaskItem" type="Sprite2D" parent="NPCArea/NPC"]
+process_mode = 3
+visible = false
+texture = ExtResource("11_0uhst")
+
+[node name="NPCAni" type="AnimationPlayer" parent="NPCArea/NPC"]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_0uhst")
+}
+
+[node name="Player" parent="." instance=ExtResource("2_22c32")]
+position = Vector2(115, 294)
+limit_right = 2600
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Flowers" type="HBoxContainer" parent="UI"]
+unique_name_in_owner = true
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 96.0
+offset_bottom = 60.0
+scale = Vector2(2, 2)
+metadata/_edit_group_ = true
+
+[node name="Flower1" type="TextureRect" parent="UI/Flowers"]
+self_modulate = Color(0.427493, 0.427493, 0.427493, 1)
+custom_minimum_size = Vector2(20, 30)
+layout_mode = 2
+texture = SubResource("AtlasTexture_wsrbg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Flower2" type="TextureRect" parent="UI/Flowers"]
+self_modulate = Color(0.427493, 0.427493, 0.427493, 1)
+custom_minimum_size = Vector2(20, 30)
+layout_mode = 2
+texture = SubResource("AtlasTexture_wsrbg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Flower3" type="TextureRect" parent="UI/Flowers"]
+self_modulate = Color(0.427493, 0.427493, 0.427493, 1)
+custom_minimum_size = Vector2(20, 30)
+layout_mode = 2
+texture = SubResource("AtlasTexture_wsrbg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Story" type="Label" parent="UI"]
+visible = false
+custom_minimum_size = Vector2(600, 120)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -260.0
+offset_right = 300.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.4, 0.196078, 0.0862745, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Jelly Cat is trapped in a squishy jelly pit! Collect ​3 \"Jelly Grass Leaves\" and toss them into the pit to harden the jelly—then rescue Jelly Cat!
+(Watch out for falling boulders—they can smash the Jelly Grass Leaves!)"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="StoryAni" type="AnimationPlayer" parent="UI/Story"]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_l6tno")
+}
+
+[node name="ChangePanel" type="Panel" parent="UI"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dxnxq")
+
+[node name="Ani" type="AnimationPlayer" parent="UI/ChangePanel"]
+libraries = {
+&"": SubResource("AnimationLibrary_6ug2b")
+}
+
+[connection signal="timeout" from="FallingObject/Timer" to="FallingObject" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Flowers/Flower1" to="Flowers/Flower1" method="_on_body_entered"]
+[connection signal="body_exited" from="Flowers/Flower1" to="Flowers/Flower1" method="_on_body_exited"]
+[connection signal="value_changed" from="Flowers/Flower1/Prog" to="Flowers/Flower1" method="_on_prog_value_changed"]
+[connection signal="body_entered" from="Flowers/Flower2" to="Flowers/Flower2" method="_on_body_entered"]
+[connection signal="body_exited" from="Flowers/Flower2" to="Flowers/Flower2" method="_on_body_exited"]
+[connection signal="value_changed" from="Flowers/Flower2/Prog" to="Flowers/Flower2" method="_on_prog_value_changed"]
+[connection signal="body_entered" from="Flowers/Flower3" to="Flowers/Flower3" method="_on_body_entered"]
+[connection signal="body_exited" from="Flowers/Flower3" to="Flowers/Flower3" method="_on_body_exited"]
+[connection signal="value_changed" from="Flowers/Flower3/Prog" to="Flowers/Flower3" method="_on_prog_value_changed"]
+[connection signal="body_entered" from="Flowers/Flower4" to="Flowers/Flower4" method="_on_body_entered"]
+[connection signal="body_exited" from="Flowers/Flower4" to="Flowers/Flower4" method="_on_body_exited"]
+[connection signal="value_changed" from="Flowers/Flower4/Prog" to="Flowers/Flower4" method="_on_prog_value_changed"]
+[connection signal="body_entered" from="Flowers/Flower5" to="Flowers/Flower5" method="_on_body_entered"]
+[connection signal="body_exited" from="Flowers/Flower5" to="Flowers/Flower5" method="_on_body_exited"]
+[connection signal="value_changed" from="Flowers/Flower5/Prog" to="Flowers/Flower5" method="_on_prog_value_changed"]
+[connection signal="body_entered" from="Flowers/Flower6" to="Flowers/Flower6" method="_on_body_entered"]
+[connection signal="body_exited" from="Flowers/Flower6" to="Flowers/Flower6" method="_on_body_exited"]
+[connection signal="value_changed" from="Flowers/Flower6/Prog" to="Flowers/Flower6" method="_on_prog_value_changed"]
+[connection signal="body_entered" from="Flowers/Flower7" to="Flowers/Flower7" method="_on_body_entered"]
+[connection signal="body_exited" from="Flowers/Flower7" to="Flowers/Flower7" method="_on_body_exited"]
+[connection signal="value_changed" from="Flowers/Flower7/Prog" to="Flowers/Flower7" method="_on_prog_value_changed"]
+[connection signal="body_entered" from="Flowers/Flower8" to="Flowers/Flower8" method="_on_body_entered"]
+[connection signal="body_exited" from="Flowers/Flower8" to="Flowers/Flower8" method="_on_body_exited"]
+[connection signal="value_changed" from="Flowers/Flower8/Prog" to="Flowers/Flower8" method="_on_prog_value_changed"]
+[connection signal="body_entered" from="Flowers/Flower9" to="Flowers/Flower9" method="_on_body_entered"]
+[connection signal="body_exited" from="Flowers/Flower9" to="Flowers/Flower9" method="_on_body_exited"]
+[connection signal="value_changed" from="Flowers/Flower9/Prog" to="Flowers/Flower9" method="_on_prog_value_changed"]
+[connection signal="body_entered" from="Flowers/Flower10" to="Flowers/Flower10" method="_on_body_entered"]
+[connection signal="body_exited" from="Flowers/Flower10" to="Flowers/Flower10" method="_on_body_exited"]
+[connection signal="value_changed" from="Flowers/Flower10/Prog" to="Flowers/Flower10" method="_on_prog_value_changed"]
+[connection signal="body_entered" from="NPCArea" to="." method="_on_flower_basket_body_entered"]
+[connection signal="body_exited" from="NPCArea" to="." method="_on_flower_basket_body_exited"]

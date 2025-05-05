@@ -1,0 +1,395 @@
+[gd_scene load_steps=34 format=3 uid="uid://sor5orocvtb4"]
+
+[ext_resource type="Script" uid="uid://bu6ekuxkopxd1" path="res://Scene/Level_1/level__1.gd" id="1_4yvg6"]
+[ext_resource type="Texture2D" uid="uid://c2fim6fjvyf7" path="res://Assest/粉红麻糬.png" id="1_bpply"]
+[ext_resource type="Script" uid="uid://bj4n0yanw28ib" path="res://Scene/mashu.gd" id="2_4yvg6"]
+[ext_resource type="Texture2D" uid="uid://d1qo5mvbtkgdt" path="res://Scene/Level_1/蜜蜂之丘1.png" id="2_8k8gc"]
+[ext_resource type="PackedScene" uid="uid://d132lpuywg2vg" path="res://Scene/Level_1/flower.tscn" id="4_cknua"]
+[ext_resource type="Texture2D" uid="uid://dcice02dc1rmh" path="res://Scene/Level_1/蜜蜂之丘2.png" id="5_8k8gc"]
+[ext_resource type="Texture2D" uid="uid://dilm8f5s3qao2" path="res://Assest/UI/Sprite sheets/Dialouge UI/dialog box small.png" id="6_3eda0"]
+[ext_resource type="Texture2D" uid="uid://p30l5oovv2p2" path="res://Assest/Sprites/Objects/Basic_Grass_Biom_things.png" id="6_xkl7m"]
+[ext_resource type="AudioStream" uid="uid://crcegt25lmfeb" path="res://Scene/Level_1/jump2.wav" id="8_oaf81"]
+[ext_resource type="Script" uid="uid://q2df7bca1ytb" path="res://Scene/Level_1/flower_basket.gd" id="8_uuc48"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_702gu"]
+size = Vector2(3648.5, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fcyc"]
+size = Vector2(66.25, 1137.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cknua"]
+radius = 45.64
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_obayv"]
+texture = ExtResource("6_3eda0")
+texture_margin_left = 25.0
+texture_margin_top = 20.0
+texture_margin_right = 9.53549
+texture_margin_bottom = 25.0167
+
+[sub_resource type="Animation" id="Animation_3eda0"]
+resource_name = "show"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MsgLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.607843)]
+}
+
+[sub_resource type="Animation" id="Animation_obayv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MsgLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oblws"]
+_data = {
+&"RESET": SubResource("Animation_obayv"),
+&"show": SubResource("Animation_3eda0")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf6ui"]
+atlas = ExtResource("1_bpply")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_702gu"]
+atlas = ExtResource("1_bpply")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egjom"]
+atlas = ExtResource("1_bpply")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klcp3"]
+atlas = ExtResource("1_bpply")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhv0t"]
+atlas = ExtResource("1_bpply")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpply"]
+atlas = ExtResource("1_bpply")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvco6"]
+atlas = ExtResource("1_bpply")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mslq"]
+atlas = ExtResource("1_bpply")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr1l6"]
+atlas = ExtResource("1_bpply")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwhya"]
+atlas = ExtResource("1_bpply")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yvco6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf6ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_702gu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egjom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klcp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhv0t")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpply")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvco6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mslq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cr1l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwhya")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nsbjw"]
+radius = 32.0156
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkl7m"]
+atlas = ExtResource("6_xkl7m")
+region = Rect2(127.842, 32.531, 16.158, 30.7395)
+
+[sub_resource type="Animation" id="Animation_oblws"]
+resource_name = "story"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.46667, 2.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_l6tno"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6tno"]
+_data = {
+&"RESET": SubResource("Animation_l6tno"),
+&"story": SubResource("Animation_oblws")
+}
+
+[node name="Level_1" type="Node2D"]
+script = ExtResource("1_4yvg6")
+
+[node name="BG2" type="Node2D" parent="."]
+
+[node name="蜜蜂之丘1" type="Sprite2D" parent="BG2"]
+texture = ExtResource("2_8k8gc")
+centered = false
+
+[node name="蜜蜂之丘3" type="Sprite2D" parent="BG2"]
+position = Vector2(1096, 0)
+texture = ExtResource("2_8k8gc")
+centered = false
+
+[node name="蜜蜂之丘2" type="Sprite2D" parent="BG2"]
+position = Vector2(2852, 360)
+texture = ExtResource("5_8k8gc")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1757.75, 756)
+shape = SubResource("RectangleShape2D_702gu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1757.75, -34)
+shape = SubResource("RectangleShape2D_702gu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-31.875, 223.75)
+shape = SubResource("RectangleShape2D_6fcyc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall"]
+position = Vector2(3547, 223.75)
+shape = SubResource("RectangleShape2D_6fcyc")
+
+[node name="Flower1" parent="." instance=ExtResource("4_cknua")]
+position = Vector2(272, 645)
+
+[node name="Flower2" parent="." instance=ExtResource("4_cknua")]
+position = Vector2(2371, 638)
+
+[node name="Flower3" parent="." instance=ExtResource("4_cknua")]
+position = Vector2(1491, 655)
+
+[node name="FlowerBasket" type="Area2D" parent="."]
+position = Vector2(3156, 570)
+script = ExtResource("8_uuc48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerBasket"]
+shape = SubResource("CircleShape2D_cknua")
+
+[node name="MsgLabel" type="Label" parent="FlowerBasket"]
+visible = false
+offset_left = 63.0
+offset_top = -98.0
+offset_right = 166.0
+offset_bottom = -6.0
+theme_override_colors/font_color = Color(0.517647, 0.247059, 0.109804, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_obayv")
+text = "按E键赠送花朵"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FlowerBasket"]
+libraries = {
+&"": SubResource("AnimationLibrary_oblws")
+}
+autoplay = "show"
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(134, 561)
+script = ExtResource("2_4yvg6")
+metadata/_edit_group_ = true
+
+[node name="Animation" type="AnimatedSprite2D" parent="Player"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_yvco6")
+animation = &"Run"
+autoplay = "Run"
+frame_progress = 0.435434
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_nsbjw")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = 0
+limit_right = 3500
+limit_bottom = 720
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("8_oaf81")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Flowers" type="HBoxContainer" parent="UI"]
+unique_name_in_owner = true
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 96.0
+offset_bottom = 60.0
+scale = Vector2(2, 2)
+metadata/_edit_group_ = true
+
+[node name="Flower1" type="TextureRect" parent="UI/Flowers"]
+self_modulate = Color(0.427493, 0.427493, 0.427493, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_xkl7m")
+stretch_mode = 5
+
+[node name="Flower2" type="TextureRect" parent="UI/Flowers"]
+self_modulate = Color(0.427493, 0.427493, 0.427493, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_xkl7m")
+stretch_mode = 5
+
+[node name="Flower3" type="TextureRect" parent="UI/Flowers"]
+self_modulate = Color(0.427493, 0.427493, 0.427493, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_xkl7m")
+stretch_mode = 5
+
+[node name="Story" type="Label" parent="UI"]
+visible = false
+custom_minimum_size = Vector2(600, 120)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -60.0
+offset_right = 300.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.4, 0.196078, 0.0862745, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "传说在蜜蜂之丘的花丛中藏着一些神奇的花朵，找到它们就能唤醒沉睡的精灵……"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="StoryAni" type="AnimationPlayer" parent="UI/Story"]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_l6tno")
+}
+
+[connection signal="body_entered" from="FlowerBasket" to="." method="_on_flower_basket_body_entered"]
+[connection signal="body_exited" from="FlowerBasket" to="." method="_on_flower_basket_body_exited"]

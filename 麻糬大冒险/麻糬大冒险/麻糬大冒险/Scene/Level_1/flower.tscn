@@ -1,0 +1,213 @@
+[gd_scene load_steps=14 format=3 uid="uid://d132lpuywg2vg"]
+
+[ext_resource type="Script" uid="uid://lr80yqrmgsg8" path="res://Scene/Level_1/flower.gd" id="1_antuy"]
+[ext_resource type="Texture2D" uid="uid://ydhfjuhkdsi3" path="res://Scene/Level_1/Image/光束.png" id="3_p25a7"]
+[ext_resource type="Texture2D" uid="uid://busetynoglbvm" path="res://Scene/Level_1/Image/光芒.png" id="3_uok65"]
+[ext_resource type="AudioStream" uid="uid://ck3ag3ub112hm" path="res://Scene/Level_1/Image/奖励.mp3" id="4_l5s68"]
+[ext_resource type="Texture2D" uid="uid://c22xao668b0tx" path="res://Scene/Level_1/Image/向日葵.png" id="4_p25a7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p25a7"]
+radius = 45.0
+height = 135.0
+
+[sub_resource type="Animation" id="Animation_p25a7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_l5s68"]
+resource_name = "flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cntce"]
+_data = {
+&"RESET": SubResource("Animation_p25a7"),
+&"flash": SubResource("Animation_l5s68")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p25a7"]
+bg_color = Color(1, 1, 1, 0.588235)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_18bpy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cntce"]
+resource_name = "缩放"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6kv8d"]
+_data = {
+&"RESET": SubResource("Animation_18bpy"),
+&"缩放": SubResource("Animation_cntce")
+}
+
+[node name="Flower" type="Area2D"]
+script = ExtResource("1_antuy")
+
+[node name="Light" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(7.45058e-07, -25)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_uok65")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_p25a7")
+region_rect = Rect2(127.639, 32.4719, 16.3609, 30.6659)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_p25a7")
+
+[node name="Prog" type="TextureProgressBar" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -90.0
+offset_right = 64.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_under = ExtResource("3_p25a7")
+texture_progress = ExtResource("3_p25a7")
+tint_under = Color(1, 1, 1, 0.588235)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Light")
+libraries = {
+&"": SubResource("AnimationLibrary_cntce")
+}
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_l5s68")
+
+[node name="Msg" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -140.0
+offset_right = 30.0
+offset_bottom = -80.0
+grow_horizontal = 2
+pivot_offset = Vector2(30, 30)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_p25a7")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MsgAni" type="AnimationPlayer" parent="Msg"]
+libraries = {
+&"": SubResource("AnimationLibrary_6kv8d")
+}
+autoplay = "缩放"
+speed_scale = 0.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="value_changed" from="Prog" to="." method="_on_prog_value_changed"]

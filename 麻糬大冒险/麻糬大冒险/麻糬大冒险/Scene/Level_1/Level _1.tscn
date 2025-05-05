@@ -1,0 +1,592 @@
+[gd_scene load_steps=34 format=3 uid="uid://sor5orocvtb4"]
+
+[ext_resource type="Script" uid="uid://bu6ekuxkopxd1" path="res://Scene/Level_1/level_1.gd" id="1_4yvg6"]
+[ext_resource type="Texture2D" uid="uid://d1qo5mvbtkgdt" path="res://Scene/Level_1/Image/蜜蜂之丘1.png" id="2_8k8gc"]
+[ext_resource type="PackedScene" uid="uid://d132lpuywg2vg" path="res://Scene/Level_1/flower.tscn" id="4_cknua"]
+[ext_resource type="Texture2D" uid="uid://dcice02dc1rmh" path="res://Scene/Level_1/Image/蜜蜂之丘2.png" id="5_8k8gc"]
+[ext_resource type="Texture2D" uid="uid://dilm8f5s3qao2" path="res://Assest/dialog box small.png" id="6_3eda0"]
+[ext_resource type="Texture2D" uid="uid://ydhfjuhkdsi3" path="res://Scene/Level_1/Image/光束.png" id="7_uuc48"]
+[ext_resource type="PackedScene" uid="uid://diuuqxqpir2wn" path="res://Scene/Player/Player.tscn" id="9_3eda0"]
+[ext_resource type="Texture2D" uid="uid://bvf88o3xl1te8" path="res://Scene/Level_1/Image/甜叶碎片.png" id="9_l6tno"]
+[ext_resource type="Texture2D" uid="uid://c22xao668b0tx" path="res://Scene/Level_1/Image/向日葵.png" id="10_3eda0"]
+[ext_resource type="Texture2D" uid="uid://cot8lpofd4la7" path="res://Scene/Level_1/Image/蜜蜂精灵.png" id="12_l6tno"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_702gu"]
+size = Vector2(3648.5, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fcyc"]
+size = Vector2(66.25, 1137.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cknua"]
+radius = 45.64
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_obayv"]
+texture = ExtResource("6_3eda0")
+texture_margin_left = 25.0
+texture_margin_top = 20.0
+texture_margin_right = 9.53549
+texture_margin_bottom = 25.0167
+
+[sub_resource type="Animation" id="Animation_obayv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("flower:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3eda0"]
+resource_name = "show"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("flower:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.607843)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oblws"]
+_data = {
+&"RESET": SubResource("Animation_obayv"),
+&"show": SubResource("Animation_3eda0")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gsuw"]
+atlas = ExtResource("12_l6tno")
+region = Rect2(0, 0, 348, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7ml4"]
+atlas = ExtResource("12_l6tno")
+region = Rect2(348, 0, 348, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4jow4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gsuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7ml4")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 4.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oblws"]
+bg_color = Color(0.556863, 0.282353, 0.117647, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.470588, 0.207843, 0.0862745, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6tno"]
+bg_color = Color(0.77485, 0.414291, 0.203195, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.470588, 0.207843, 0.0862745, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Animation" id="Animation_j7ml4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-275, -150)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MsgLabel:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4gsuw"]
+resource_name = "bee"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-275, -150), Vector2(-275, -400)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4jow4"]
+resource_name = "talk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MsgLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7ml4"]
+_data = {
+&"RESET": SubResource("Animation_j7ml4"),
+&"show": SubResource("Animation_4gsuw"),
+&"talk": SubResource("Animation_4jow4")
+}
+
+[sub_resource type="Animation" id="Animation_l6tno"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_oblws"]
+resource_name = "story"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.46667, 2.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6tno"]
+_data = {
+&"RESET": SubResource("Animation_l6tno"),
+&"story": SubResource("Animation_oblws")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3eda0"]
+bg_color = Color(0.18359, 0.18359, 0.18359, 1)
+
+[sub_resource type="Animation" id="Animation_6ug2b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rr16x"]
+resource_name = "change"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ug2b"]
+_data = {
+&"RESET": SubResource("Animation_6ug2b"),
+&"change": SubResource("Animation_rr16x")
+}
+
+[node name="Level_1" type="Node2D"]
+script = ExtResource("1_4yvg6")
+
+[node name="BG2" type="Node2D" parent="."]
+
+[node name="蜜蜂之丘1" type="Sprite2D" parent="BG2"]
+texture = ExtResource("2_8k8gc")
+centered = false
+
+[node name="蜜蜂之丘3" type="Sprite2D" parent="BG2"]
+position = Vector2(1096, 0)
+texture = ExtResource("2_8k8gc")
+centered = false
+
+[node name="蜜蜂之丘2" type="Sprite2D" parent="BG2"]
+position = Vector2(2852, 360)
+texture = ExtResource("5_8k8gc")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1757.75, 750)
+shape = SubResource("RectangleShape2D_702gu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1757.75, -34)
+shape = SubResource("RectangleShape2D_702gu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-31.875, 223.75)
+shape = SubResource("RectangleShape2D_6fcyc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall"]
+position = Vector2(3547, 223.75)
+shape = SubResource("RectangleShape2D_6fcyc")
+
+[node name="Flower1" parent="." instance=ExtResource("4_cknua")]
+position = Vector2(371, 613)
+
+[node name="Flower2" parent="." instance=ExtResource("4_cknua")]
+position = Vector2(2418, 592)
+
+[node name="Flower3" parent="." instance=ExtResource("4_cknua")]
+position = Vector2(1294, 594)
+
+[node name="FlowerBasket" type="Area2D" parent="."]
+position = Vector2(3156, 570)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerBasket"]
+shape = SubResource("CircleShape2D_cknua")
+
+[node name="flower" type="Label" parent="FlowerBasket"]
+visible = false
+offset_left = -145.0
+offset_top = -204.0
+offset_right = 146.535
+offset_bottom = -112.0
+theme_override_colors/font_color = Color(0.517647, 0.247059, 0.109804, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_obayv")
+text = "Press ​E to give flowers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FlowerBasket"]
+libraries = {
+&"": SubResource("AnimationLibrary_oblws")
+}
+autoplay = "show"
+
+[node name="NPC" type="Node2D" parent="FlowerBasket"]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-275, -150)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="NPC" type="AnimatedSprite2D" parent="FlowerBasket/NPC"]
+process_mode = 3
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_4jow4")
+animation = &"talk"
+
+[node name="Light" type="Sprite2D" parent="FlowerBasket/NPC"]
+show_behind_parent = true
+position = Vector2(22.0001, 22)
+scale = Vector2(3.3, 3.3)
+texture = ExtResource("7_uuc48")
+
+[node name="MsgLabel" type="Label" parent="FlowerBasket/NPC"]
+visible = false
+offset_left = 160.0
+offset_top = -48.0
+offset_right = 466.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(0.517647, 0.247059, 0.109804, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_obayv")
+text = "Thank you for waking me up! Here’s a piece of my treasured [Sweet Leaf Fragment]—it’s yours now!"
+vertical_alignment = 1
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Thanks" type="Button" parent="FlowerBasket/NPC/MsgLabel"]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = 8.0
+offset_right = 80.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_oblws")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l6tno")
+theme_override_styles/normal = SubResource("StyleBoxFlat_oblws")
+text = "谢谢"
+
+[node name="TaskItem" type="Sprite2D" parent="FlowerBasket/NPC"]
+process_mode = 3
+visible = false
+position = Vector2(91, 60)
+texture = ExtResource("9_l6tno")
+
+[node name="NPCAni" type="AnimationPlayer" parent="FlowerBasket/NPC"]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_j7ml4")
+}
+
+[node name="Player" parent="." instance=ExtResource("9_3eda0")]
+position = Vector2(134, 561)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Flowers" type="HBoxContainer" parent="UI"]
+unique_name_in_owner = true
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 96.0
+offset_bottom = 60.0
+scale = Vector2(2, 2)
+metadata/_edit_group_ = true
+
+[node name="Flower1" type="TextureRect" parent="UI/Flowers"]
+self_modulate = Color(0.427493, 0.427493, 0.427493, 1)
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+texture = ExtResource("10_3eda0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Flower2" type="TextureRect" parent="UI/Flowers"]
+self_modulate = Color(0.427493, 0.427493, 0.427493, 1)
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+texture = ExtResource("10_3eda0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Flower3" type="TextureRect" parent="UI/Flowers"]
+self_modulate = Color(0.427493, 0.427493, 0.427493, 1)
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+texture = ExtResource("10_3eda0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Story" type="Label" parent="UI"]
+visible = false
+custom_minimum_size = Vector2(600, 120)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -260.0
+offset_right = 300.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.4, 0.196078, 0.0862745, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Legend has it that among the flowers on Bee Hill, there are some magical blossoms hidden. Finding them can awaken the slumbering spirits..."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="StoryAni" type="AnimationPlayer" parent="UI/Story"]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_l6tno")
+}
+
+[node name="ChangePanel" type="Panel" parent="UI"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3eda0")
+
+[node name="Ani" type="AnimationPlayer" parent="UI/ChangePanel"]
+libraries = {
+&"": SubResource("AnimationLibrary_6ug2b")
+}
+
+[connection signal="body_entered" from="FlowerBasket" to="." method="_on_flower_basket_body_entered"]
+[connection signal="body_exited" from="FlowerBasket" to="." method="_on_flower_basket_body_exited"]
